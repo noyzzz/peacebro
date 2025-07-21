@@ -1,8 +1,11 @@
 import cv2
 import mediapipe as mp
 
-# 🧠 Replace this with your actual IP Webcam video URL
-IP_CAM_URL = "http://192.168.1.79:8080/video"
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+IP_CAM_URL = os.getenv("IP_CAM_URL")
 
 # Initialize video stream from IP Webcam
 cap = cv2.VideoCapture(IP_CAM_URL, cv2.CAP_FFMPEG)

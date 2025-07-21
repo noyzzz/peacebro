@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  hand-tracker:
+    build: .
+    network_mode: "host"  # Allow access to phone on LAN
+    environment:
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - ./main.py:/app/main.py
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./.env:/app/.env

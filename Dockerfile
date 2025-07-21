@@ -1,23 +1,20 @@
 FROM continuumio/miniconda3
 
-# Set working directory
 WORKDIR /app
 
-# Install system dependencies for OpenCV
+# Install OpenCV system deps
 RUN apt-get update && apt-get install -y libgl1 libglib2.0-0 ffmpeg
 
-# Copy environment and app code
+# Copy environment and install it
 COPY environment.yml .
-COPY main.py .
-
-# Create Conda env
 RUN conda env create -f environment.yml
 
-# Use conda env as default shell
+# Install dotenv (if not already in env)
+RUN conda run -n mediapipe-env pip install python-dotenv
+
 SHELL ["conda", "run", "-n", "mediapipe-env", "/bin/bash", "-c"]
 
-# Set OpenCV display variable (for GUI)
 ENV DISPLAY=:0
 
-# Run your script
+# main.py will be mounted via volume
 CMD ["conda", "run", "-n", "mediapipe-env", "python", "main.py"]
