@@ -10,7 +10,7 @@ Runs entirely in Docker using your provided Conda `environment.yml` and `.env` c
 
 - 📱 Connects to IP Webcam Android app via `.env` config
 - 🧠 Detects up to 2 hands with 21 landmarks each using MediaPipe
-- ✌️ Recognizes the peace sign gesture
+- ✌️ Recognizes the peace sign gesture (next feature)
 - 🐳 Dockerized for reproducibility
 - ⚙️ Uses `docker-compose` for simple launching
 - ✅ Automatically reloads webcam URL from `.env`
